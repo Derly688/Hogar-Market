@@ -20,11 +20,11 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Productos
+                Usuario
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="lista_productos.html">Listar Productos</a>
-                <a class="dropdown-item" href="formulario_producto.html">Crear Producto</a>
+                <a class="dropdown-item" href="lista_usuarios.html">Listar usuarios</a>
+                <a class="dropdown-item" href="Formulario_Usuario.html">Crear usuario</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
@@ -37,43 +37,37 @@
           </form>
         </div>
     </nav>
-    <h2>Crear Producto</h2>   
-    <form id="formulario_producto">
+    <h2>Crear Usuario</h2>   
+    <form>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="descripcion">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" placeholder="Describa el producto (dato único)">
+            <label for="Nombre_completo">Nombre Completo</label>
+            <input type="text" class="form-control" id="Nombre_Completo" placeholder="Escriba el(nombre completo)">
           </div>
           <div class="form-group col-md-6">
-            <label for="cantidad_inventario">Cantidad Inventario</label>
-            <input type="number" class="form-control" id="cantidad_inventario">
+            <label for="Numero_de_Documento">Número de Documento</label>
+            <input type="number" class="form-control" id="Numero_de_Documento" placeholder="Escriba el (numero de documento)">
           </div>
           <div class="form-group col-md-6">
-            <label for="precio_unitario">Precio Unitario</label>
-            <input type="number" class="form-control" id="precio_unitario">
+            <label for="ID_Usuario">ID Usuario</label>
+            <input type="number" class="form-control" id="ID_Usuario" placeholder="Escriba el (ID Usuario)">
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="unidad_medida">Unidad de Medida</label>
-            <select id="unidad_medida" class="form-control">
-              <option selected>Por favor seleccione...</option>
-              <option value="GRS">GRS</option>
-              <option value="UND">UND</option>
-            </select>
+        <div class="form-group col-md-6">
+            <label for="Correo_Electronico">Correo Electrónico</label>
+            <input type="number" class="form-control" id="Correo_Electronico" placeholder="Escriba el (correo electronico)">
           </div>
-          <div class="form-group col-md-4">
-            <label for="categoria">Categoria</label>
-            <select id="categoria" class="form-control">
-              <option selected>Por favor seleccione...</option>
-              <option value="1">Alimentos</option>
-              <option value="2">Ropa</option>
-            </select>
+          <div class="form-group col-md-6">
+            <label for="Telefono">Telefono</label>
+            <input type="number" class="form-control" id="Telefono" placeholder="Escriba el (numero de telefono)">
+          </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="Direccion">Direccion</label>
+            <input type="number" class="form-control" id="Direccion" placeholder="Escriba la (Direccion)">
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
       </form>  
 </body>
-
-
