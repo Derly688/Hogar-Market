@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">FACT-3000</a>
+        <a class="navbar-brand" href="index.html">FACT-3000</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,28 +26,71 @@
                 <a class="dropdown-item" href="lista_productos.html">Listar Productos</a>
                 <a class="dropdown-item" href="formulario_producto.html">Crear Producto</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="" href="#"></a>
               </div>
             </li>
-
+    
           </ul>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Clientes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="lista_clientes.html">Listar Clientes</a>
+                  <a class="dropdown-item" href="formulario_cliente.html">Crear Clientes</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="" href="#"></a>
+                </div>
+              </li>
+            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Usuarios
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="lista_usuarios.html">Listar Usuarios</a>
+                    <a class="dropdown-item" href="formulario_usuario.html">Crear Usuarios</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="" href="#"></a>
+                  </div>
+                </li>
+              </ul>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Factura
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="lista_facturas.html">Listar Factura</a>
+                      <a class="dropdown-item" href="formulario_factura.html">Crear Factura</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="" href="#"></a>
+                    </div>
+                  </li>
+    
+            </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
     </nav>
-    <h2>Listado de Usuarios</h2>   
+    <h2>Listado de factura</h2>   
     <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Número de Documento</th>
-            <th scope="col">Correo Electronico</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Direccion</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Cantidad Inventario</th>
+            <th scope="col">Codigo del producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Unidad de Medida</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -56,6 +99,7 @@
             <th scope="row">1</th>
             <td>Pan tajado bolsa 200 grs</td>
             <td>100</td>
+            <td>5000</td>
             <td>5000</td>
             <td>GRS</td>
             <td>Alimentos</td>
@@ -69,6 +113,7 @@
             <td>Carne cerdo costilla</td>
             <td>101</td>
             <td>3200</td>
+            <td>3200</td>
             <td>GRS</td>
             <td>Alimentos</td>                     
             <td>
@@ -81,6 +126,7 @@
             <td>Pechuga de pollo</td>
             <td>102</td>
             <td>3500</td>
+            <td>3500</td>
             <td>GRS</td>
             <td>Alimentos</td>                     
             <td>
@@ -92,6 +138,7 @@
             <th scope="row">2</th>
             <td>Galletas ducales paquete 4 tacos</td>
             <td>103</td>
+            <td>4500</td>
             <td>4500</td>
             <td>GRS</td>
             <td>Alimentos</td>                     
