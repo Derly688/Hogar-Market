@@ -3,137 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <title>App Facturacion</title>
+    <link rel="stylesheet" href="../static/styles/css/styles.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">FACT-3000</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Productos
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="lista_productos.html">Listar Productos</a>
-            <a class="dropdown-item" href="formulario_producto.html">Crear Producto</a>
-            <div class="dropdown-divider"></div>
-            <a class="" href="#"></a>
-          </div>
-        </li>
-
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#07ff1c;">
+    <img src="../static/images/logo_app.jpg" alt="Tu Logo" width="x" height="y"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Clientes
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="lista_clientes.html">Listar Clientes</a>
-              <a class="dropdown-item" href="formulario_cliente.html">Crear Clientes</a>
-              <div class="dropdown-divider"></div>
-              <a class="" href="#"></a>
-            </div>
-          </li>
-        </ul>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Productos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                   <a class="dropdown-item" href="lista_productos.html">Listar Productos</a>
+                   <a class="dropdown-item" href="formulario_producto.html">Crear Producto</a>
+                 </div>
+                  <div class="dropdown-divider"></div>
+                   <a class="" href="#"></a>
+                  </div>
+            </li>
+
+          </ul>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Usuarios
+                Clientes
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="lista_usuarios.html">Listar Usuarios</a>
-                <a class="dropdown-item" href="formulario_usuario.html">Crear Usuarios</a>
+                <a class="dropdown-item" href="lista_clientes.html">Listar Clientes</a>
+                <a class="dropdown-item" href="formulario_cliente.html">Crear Clientes</a>
                 <div class="dropdown-divider"></div>
                 <a class="" href="#"></a>
               </div>
             </li>
           </ul>
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Factura
+                  Usuarios
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="lista_facturas.html">Listar Factura</a>
-                  <a class="dropdown-item" href="formulario_factura.html">Crear Factura</a>
+                  <a class="dropdown-item" href="lista_usuarios.html">Listar Usuarios</a>
+                  <a class="dropdown-item" href="formulario_usuario.html">Crear Usuarios</a>
                   <div class="dropdown-divider"></div>
                   <a class="" href="#"></a>
                 </div>
               </li>
+            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Factura
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="lista_facturas.html">Listar Factura</a>
+                    <a class="dropdown-item" href="formulario_factura.html">Crear Factura</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="" href="#"></a>
+                  </div>
+                </li>
 
-        </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-</nav>
-    
-    <div class="container">
-        <div class="client-section">
-          <div class="form-group2">
-              <label for="clientId">ID Cliente:</label  >
-              <input type="text" id="clientId" placeholder="Ingrese el ID del cliente">
+          </ul>
+
+          
+            <form class="form-inline my-2 my-lg-0">
+              <div class="row">
+                  <div class="col ">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                  </div>
+                  <div class="col">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                  </div>
+
+              </div>
+
+              
+               
+            </form>
           </div>
-          <div class="form-group2">
-              <label for="clientName">Nombre:</label>
-              <input type="text" id="clientName" placeholder="Ingrese el nombre del cliente">
-          </div>
-          <div class="form-group2">
-              <label for="clientAddress">Dirección:</label>
-              <input type="text" id="clientAddress" placeholder="Ingrese la dirección">
-          </div>
-          <div class="form-group2">
-              <label for="clientPhone">Teléfono:</label>
-              <input type="text" id="clientPhone" placeholder="Ingrese el teléfono">
-          </div>
-          <div class="form-group2">
-            <label for="productCode">Código del Producto:</label>
-            <input type="text" id="productCode" placeholder="Ingrese el código del producto">
-        </div>
-          <div class="form-group2">
-            <label for="productQuantity">Cantidad:</label>
-            <input type="number" id="productQuantity" min="1" value="1">
-        </div>
-        <button id="addProduct">Agregar Producto</button> 
       </div>
+  </nav> 
+    
+  <body>
+    <div class="container">
+        <div class="header">
+            <h1>Sistema de Facturación</h1>
+        </div>
+
+        <div class="client-section">
+            <h2>Datos del Cliente</h2>
+            <div class="form-group">
+                <label for="clientId">ID Cliente:</label>
+                <input type="text" id="clientId" placeholder="Ingrese el ID del cliente">
+            </div>
+            <div class="form-group">
+                <label for="clientName">Nombre:</label>
+                <input type="text" id="clientName" placeholder="Ingrese el nombre del cliente">
+            </div>
+            <div class="form-group">
+                <label for="clientAddress">Dirección:</label>
+                <input type="text" id="clientAddress" placeholder="Ingrese la dirección">
+            </div>
+            <div class="form-group">
+                <label for="clientPhone">Teléfono:</label>
+                <input type="text" id="clientPhone" placeholder="Ingrese el teléfono">
+            </div>
+        </div>
+
+        <div class="product-section">
+            <h2>Agregar Productos</h2>
+            <div class="form-group">
+                <label for="productCode">Código del Producto:</label>
+                <input type="text" id="productCode" placeholder="Ingrese el código del producto">
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Descripción:</label>
+                <input type="text" id="productDescription" placeholder="Descripción del producto">
+            </div>
+            <div class="form-group">
+                <label for="productQuantity">Cantidad:</label>
+                <input type="number" id="productQuantity" min="1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="unitPrice">Precio Unitario:</label>
+                <input type="number" id="unitPrice" min="0" step="0.01" placeholder="0.00">
+            </div>
+            <button id="addProduct">Agregar Producto</button>
+        </div>
+
+        <h2>Detalle de Factura</h2>
+        <table id="invoiceTable">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los productos se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+
+        <div class="total-section">
+            <p>Total: $<span id="totalAmount">0.00</span></p>
+        </div>
+
+        <div class="actions">
+            <button id="generateInvoice">Generar Factura</button>
+            <button id="clearAll" class="delete-btn">Limpiar Todo</button>
+        </div>
     </div>
-    <h2>Detalle de Factura</h2>
-            <table id="invoiceTable">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Descripción</th>
-                        <th>Cantidad</th>
-                        <th>Precio Unitario</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-    
-            <div class="total-section">
-                <p>Total: $<span id="totalAmount">0.00</span></p>
-            </div>
-    
-            <div class="actions">
-                <button id="generateInvoice">Generar Factura</button>
-                <button id="clearAll" class="delete-btn">Limpiar Todo</button>
-            </div>
-        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addProductBtn = document.getElementById('addProduct');
+            const generateInvoiceBtn = document.getElementById('generateInvoice');
+            const clearAllBtn = document.getElementById('clearAll');
+            const invoiceTable = document.getElementById('invoiceTable').getElementsByTagName('tbody')[0];
+            const totalAmountElement = document.getElementById('totalAmount');
+
+            let products = [];
+            let totalAmount = 0;
+
+            // Función para agregar producto
+            addProductBtn.addEventListener('click', function() {
+                const productCode = document.getElementById('productCode').value;
+                const productDescription = document.getElementById('productDescription').value;
+                const productQuantity = parseInt(document.getElementById('productQuantity').value);
+                const unitPrice = parseFloat(document.getElementById('unitPrice').value);
+
+                if (!productCode || !productDescription || isNaN(productQuantity) || isNaN(unitPrice)) {
+                    alert('Por favor complete todos los campos del producto');
+                    return;
+                }
+
+                const productTotal = productQuantity * unitPrice;
+                totalAmount += productTotal;
+
+                const product = {
+                    code: productCode,
+                    description: productDescription,
+                    quantity: productQuantity,
+                    unitPrice: unitPrice,
+                    total: productTotal
+                };
+
+                products.push(product);
+                updateInvoiceTable();
+                updateTotalAmount();
+
+                // Limpiar campos del producto
+                document.getElementById('productCode').value = '';
+                document.getElementById('productDescription').value = '';
+                document.getElementById('productQuantity').value = '1';
+                document.getElementById('unitPrice').value = '';
+            });
+
+            // Función para actualizar la tabla de factura
+            function updateInvoiceTable() {
+                invoiceTable.innerHTML = '';
+                products.forEach((product, index) => {
+                    const row = invoiceTable.insertRow();
+                    row.innerHTML = `
+                        <td>${product.code}</td>
+                        <td>${product.description}</td>
+                        <td>${product.quantity}</td>
+                        <td>$${product.unitPrice.toFixed(2)}</td>
+                        <td>$${product.total.toFixed(2)}</td>
+                        <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
+                    `;
+                });
+
+                // Agregar event listeners a los botones de eliminar
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        totalAmount -= products[index].total;
+                        products.splice(index, 1);
+                        updateInvoiceTable();
+                        updateTotalAmount();
+                    });
+                });
+            }
+
+            // Función para actualizar el total
+            function updateTotalAmount() {
+                totalAmountElement.textContent = totalAmount.toFixed(2);
+            }
+
+            // Función para generar factura
+            generateInvoiceBtn.addEventListener('click', function() {
+                const clientId = document.getElementById('clientId').value;
+                const clientName = document.getElementById('clientName').value;
+
+                if (!clientId || !clientName) {
+                    alert('Por favor complete los datos del cliente');
+                    return;
+                }
+
+                if (products.length === 0) {
+                    alert('Por favor agregue al menos un producto');
+                    return;
+                }
+
+                // Aquí puedes implementar la lógica para generar la factura
+                // Por ejemplo, enviar a un servidor, imprimir, etc.
+                alert('Factura generada exitosamente!\n\nCliente: ' + clientName + '\nTotal: $' + totalAmount.toFixed(2));
+                
+                // Opcional: limpiar el formulario después de generar
+                // clearForm();
+            });
+
+            // Función para limpiar todo
+            clearAllBtn.addEventListener('click', function() {
+                if (confirm('¿Está seguro que desea limpiar toda la factura?')) {
+                    clearForm();
+                }
+            });
+
+            // Función para limpiar el formulario
+            function clearForm() {
+                document.getElementById('clientId').value = '';
+                document.getElementById('clientName').value = '';
+                document.getElementById('clientAddress').value = '';
+                document.getElementById('clientPhone').value = '';
+                document.getElementById('productCode').value = '';
+                document.getElementById('productDescription').value = '';
+                document.getElementById('productQuantity').value = '1';
+                document.getElementById('unitPrice').value = '';
+                
+                products = [];
+                totalAmount = 0;
+                invoiceTable.innerHTML = '';
+                totalAmountElement.textContent = '0.00';
+            }
+        });
+    </script>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>
