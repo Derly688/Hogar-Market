@@ -7,3 +7,4 @@ from src.app import app
 def factura():
     return render_template('factura.html')
 
+
