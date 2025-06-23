@@ -1,4 +1,3 @@
-print("🚀 Iniciando app.py")
 from flask import Flask
 from flask_controller import FlaskControllerRegister 
 from src.models import Base, engine 
