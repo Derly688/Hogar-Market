@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey  
-from app.models import session, Base
-from app.models.categorias import Categorias
+from src.models import session, Base
+from src.models.categorias import Categorias
 from src.app import app
 
 class Productos(Base):

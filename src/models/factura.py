@@ -23,4 +23,4 @@ class Factura(Base):
     def traer_factura():
         factura = session.query(factura).all()
         return factura
-    print("se guardó")
+    

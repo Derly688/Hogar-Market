@@ -6,5 +6,5 @@ from src.app import app
 class ClientesController(FlaskController):
     @app.route('/clientes.html')
     def gestion_clientes():
-    return render_template('clientes.html',titulo='Ver productos'),
+    return render_template('clientes.html',titulo='Ver productos')
     
