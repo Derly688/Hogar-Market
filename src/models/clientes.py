@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey,Date,engine
-from src.models import session, Base
+from src.models import session, Base, engine
 
 class Clientes(Base):
     __tablename__ = "clientes"
@@ -10,7 +10,7 @@ class Clientes(Base):
     telefono = Column(String(15))
     email = Column(String(20))
 
-    def __init__(self,nombre,fecha_nacimiento,cedula,telefono,email):
+    def __init__(self, nombre,fecha_nacimiento,cedula,telefono,email):
         self.nombre = nombre
         self.fecha_nacimiento = fecha_nacimiento
         self.cedula = cedula

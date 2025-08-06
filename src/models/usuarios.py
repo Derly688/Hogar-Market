@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Date
 from src.models import session, Base, engine
 
-class Usuarios(Base):
+class Usuarios(Base):  
     __tablename__ = "usuarios"
     id = Column(Integer, primary_key=True)
     nombre = Column(String(100) )
@@ -13,7 +13,7 @@ class Usuarios(Base):
     contraseña = Column(String(30), nullable=False)
 
 
-    def __init__(self,nombre,fecha_nacimiento,cedula,telefono,email,area,contraseña): 
+    def __init__(self, id ,nombre,fecha_nacimiento,cedula,telefono,email,area,contraseña): 
         self.nombre = nombre
         self.fecha_nacimiento = fecha_nacimiento
         self.cedula = cedula

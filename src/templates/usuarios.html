@@ -50,53 +50,58 @@
     </div>
  </nav>
 
-  <header class="bg-white text-dark text-center py-5">
-        <h1>Usuarios</h1>
-        <p>Administra los usuarios y permisos del sistema.</p>
-  </header>
-    
-
- <div class="container">
-    <div class="row">
-      <div class="col d-flex  justify-content-center ">
-        <div class="card shadow">
-          <div class="card-body" style="background-color: #dee2e6;">
-              <div class="container d-flex  align-items-center" >
-                  <img src="../static/images/iconoagregarusuario.png" alt="" style=" width: 50px;" class="">
-              </div>
-              <br>
-              <form>
-
-                <section id="crearnuevousuario" class="mb-5 d-flex justify-content-center ">
-                          
-                  <a href="crearnuevousuario.html" class="btn " style="background-color: #20c997;">Agregar usuario</a>
-                  </section>
-              </form>
-          </div>
-      </div> 
-       
-      <div class="col d-flex  justify-content-center">
-        <div class="card shadow">
-          <div class="card-body" style="background-color: #dee2e6;">
-              <div class="container d-flex align-items-" >
-                  <img src="../static/images/iconoeditarusuario.png" alt="" style=" width: 50px;" class="">
-              </div>
-              <br>
-              <form>
-
-                <section id="crearnuevousuario" class="mb-5 d-flex justify-content-center align-items-center">
-                          
-                  <a href="modificarusuario.html" class="btn " style="background-color: #20c997;">Modificar usuario</a>
-                  </section>
-              </form>
-          </div>
-      </div>
-    
+ </div>
+  <br>
+  <h1 class="text-center">Usuarios</h1>
+  <div class="row">
+    <div class=" col d-flex text-center">
+      <a href="crearnuevousuario.html" class="btn background-color: btn-primary"> Agregar nuevo usuario</a>
+    </div>
   </div>
+  <br>
 
-  
 
-  
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha de nacimiento</th>
+        <th scope="col">Cedula</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Email</th>
+        <th scope="col">Area</th>
+        <th scope="col">Acciones</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in usuarios %}
+      <tr>
+        <th scope="row">{{usuario.id}}</th>
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.fecha_nacimiento}}</td>
+        <td>{{usuario.cedula}}</td>
+        <td>{{usuario.telefono}}</td>
+        <td>{{usuario.email}}</td>
+        <td>{{usuario.area}}</td>
+        <td>
+          <a href='#' class="btn btn-sm btn-warning">Editar</a>
+          <form action="#" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   
    
   
