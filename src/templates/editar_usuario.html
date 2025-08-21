@@ -1,137 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg  navbar-light" style="background-color:#ffc107;">
-    <div class="container-fluid">
-      <a href="index.html">
-        <img src="../static/images/logosinfondo.png" alt="" style="height: 30px;">
-      </a>
-      
-      <a class="navbar-brand" href="index.html">Merka Logic</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav" style="margin-left: auto;"> 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="usuarios.html">Usuarios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="factura.html">Factura</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="clientes.html">Gestión de clientes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="inventarios.html"> Inventarios</a>
-          </li>
-          <li>
-            <div>
-              <a href="inicio-de-sesion.html">
-                <img src="../static/images/icono cerra sesion.png" alt="" style="width: 30px;" > 
-              </a>
-            </div>
-            
-           
-            
-           
-          </li>
-        </ul>
-      </div>
-    </div>
-</nav>
+{% extends "layout.html" %}
 
-  <div class="container mt-5">
-      <form class="d-flex" role="search">
-         <input class="form-control me-2" type="search" placeholder="Buscar usuario por nombre" aria-label="Buscar">
-         <button class="btn btn-outline-success" type="submit">Buscar usuario </button>
-      </form>
+{% block contenido %}
+  <h1> {{ titulo }}</h1>
+  <div class=" container d-flex justify-content-end">
+      <a href="editar_usuario.html" class="btn background-color: btn-primary"></a>
   </div>
 
- <div class="container mt-5">
-      <form class="d-flex" role="search">
-         <input class="form-control me-2" type="search" placeholder="Buscar usuario por cedula" aria-label="Buscar">
-         <button class="btn btn-outline-success" type="submit">Buscar usuario </button>
-     </form>
- </div> 
+    <div class="container mt-5">
+      <h2>Usuario</h2>
+      <form action="/editar_usuarios" method="post">
+          
+      
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{usuario.nombre}}" placeholder="Nombre completo" onblur="validarNombre()">
+            <div class="invalid-feedback" id="errorNombre">El nombre es requerido (mínimo 3 caracteres)</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="fechaNacimiento" name="fecha_nacimiento" value="{{usuario.fecha_nacimiento}}" onblur="validarFechaNacimiento()">
+            <div class="invalid-feedback" id="errorFecha">Debes ser mayor de 18 años</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="cedula" class="form-label">Cédula</label>
+            <input type="text" class="form-control" id="cedula" name="cedula" value="{{usuario.cedula}}" placeholder="1234567890" onblur="validarCedula()">
+            <div class="invalid-feedback" id="errorCedula">La cédula debe tener entre 8 y 12 dígitos</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" value="{{usuario.telefono}}" placeholder="3001234567" onblur="validarTelefono()">
+            <div class="invalid-feedback" id="errorTelefono">El teléfono debe tener 10 dígitos</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{usuario.email}}" placeholder="ejemplo@dominio.com" onblur="validarEmail()">
+            <div class="invalid-feedback" id="errorEmail">Ingresa un email válido</div>
+          </div>
 
- <div class="container mt-5">
-    <form>
-        <div class="mb-3">
-            <label for="cargo" class="form-label">Filtrar por cargo:</label>
-            <select class="form-select" id="cargo" name="cargo">
-                <option selected disabled>Seleccione una opción</option>
-                <option value="administrador">Administrador</option>
-                <option value="jefe_inventarios">Jefe de Inventarios</option>
-                <option value="cajero">Cajero</option>
+          
+      
+          <div class="mb-4">
+            <label for="area" class="form-label">Área</label>
+            <select class="form-select" name="area" value="{{usuario.area}}"id="area" onblur="validarArea()">
+              <option value="">Seleccione área</option>
+              <option value="1">Jefe de inventarios</option>
+              <option value="2">Cajero</option>
+              <option value="3">Admin</option>
             </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
- </div>
+            <div class="invalid-feedback" id="errorArea">Debes seleccionar un área</div>
+          </div>
 
- <div class="container mt-5">
-       <h2 class="mb-4">Tabla de Empleados</h2>
-       <table class="table table-striped table-hover">
-           <thead>
-              <tr>
-                 <th scope="col">Nombre</th>
-                 <th scope="col">Cédula</th>
-                 <th scope="col">Área</th>
-                 <th scope="col">Fecha de Nacimiento</th>
-                 <th scope="col">Sexo</th>
-                 <th scope="col">Email</th>
-                 <th scope="col">Teléfono</th>
-                 </tr>
-          </thead>
-          <tbody>
-               <tr>
-                  <td>Juan Pérez</td>
-                  <td>123456789</td>
-                  <td>Administrador</td>
-                  <td>1990-05-15</td>
-                  <td>Masculino</td>
-                  <td>juan.perez@example.com</td>
-                  <td>555-1234</td>
-                  <td><button onclick="editarFila()">Editar</button></td>
-                  <td><button onclick="eliminarFila()">Eliminar</button></td>
-               </tr>
-               <tr>
-                  <td>María Gómez</td>
-                  <td>987654321</td>
-                  <td>Cajera</td>
-                  <td>1985-10-22</td>
-                  <td>Femenino</td>
-                  <td>maria.gomez@example.com</td>
-                  <td>555-5678</td>
-                  <td><button onclick="editarFila()">Editar</button></td>
-                  <td><button onclick="eliminarFila()">Eliminar</button></td>
-               </tr>
-               <tr>
-                  <td>Carlos López</td>
-                  <td>456789123</td>
-                  <td>Jefe de inventarios</td>
-                  <td>1995-03-30</td>
-                  <td>Masculino</td>
-                  <td>carlos.lopez@example.com</td>
-                 <td>555-8765</td>
-                  <td><button onclick="editarFila()">Editar</button></td>
-                  <td><button onclick="eliminarFila()">Eliminar</button></td>
-               </tr>
-           </tbody>
-       </table>
-    </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Contraseña</label>
+            <input type="text" class="form-control" id="contraseña" name="contraseña" value="{{usuario.contraseña}}" placeholder="ejemplo@dominio.com" >
 
+          </div>
+          
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button> 
+          </div>
+        </form>
+      </div>
 
+      <script>
+       
+        
+        function mostrarError(elemento, mensajeId, mostrar) {
+          const campo = document.getElementById(elemento);
+          const error = document.getElementById(mensajeId);
+          
+          if (mostrar) {
+            campo.classList.add('is-invalid');
+            error.style.display = 'block';
+          } else {
+            campo.classList.remove('is-invalid');
+            error.style.display = 'none';
+          }
+          
+          return !mostrar; 
+        }
+        
+        
+        function validarCodigo() {
+          const campo = document.getElementById("codigo");
+          const valor = campo.value.trim();
+          const regex = /^[A-Z]{3}[0-9]{1,}$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('codigo', 'errorCodigo', true);
+          }
+          return mostrarError('codigo', 'errorCodigo', false);
+        }
+        
+        
+        function validarNombre() {
+          const valor = document.getElementById("nombre").value.trim();
+          if (valor.length < 3) {
+            return mostrarError('nombre', 'errorNombre', true);
+          }
+          return mostrarError('nombre', 'errorNombre', false);
+        }
+        
+        
+        function validarFechaNacimiento() {
+          const fechaInput = document.getElementById("fechaNacimiento").value;
+          if (!fechaInput) {
+            return mostrarError('fechaNacimiento', 'errorFecha', true);
+          }
+          
+          const fechaNacimiento = new Date(fechaInput);
+          const hoy = new Date();
+          const edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+          const mes = hoy.getMonth() - fechaNacimiento.getMonth();
+          
+          if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+            edad--;
+          }
+          
+          if (edad < 18) {
+            return mostrarError('fechaNacimiento', 'errorFecha', true);
+          }
+          return mostrarError('fechaNacimiento', 'errorFecha', false);
+        }
+        
+        
+        function validarCedula() {
+          const valor = document.getElementById("cedula").value.trim();
+          const regex = /^\d{8,12}$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('cedula', 'errorCedula', true);
+          }
+          return mostrarError('cedula', 'errorCedula', false);
+        }
+        
+        
+        function validarTelefono() {
+          const valor = document.getElementById("telefono").value.trim();
+          const regex = /^\d{10}$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('telefono', 'errorTelefono', true);
+          }
+          return mostrarError('telefono', 'errorTelefono', false);
+        }
+        
+        
+        function validarEmail() {
+          const valor = document.getElementById("email").value.trim();
+          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('email', 'errorEmail', true);
+          }
+          return mostrarError('email', 'errorEmail', false);
+        }
+        
+        
+        function validarArea() {
+          const valor = document.getElementById("area").value;
+          if (!valor) {
+            return mostrarError('area', 'errorArea', true);
+          }
+          return mostrarError('area', 'errorArea', false);
+        }
+        </script>
 
+ {% endblock contenido%}
 </body>
 </html>

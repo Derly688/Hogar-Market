@@ -25,6 +25,10 @@ class Clientes(Base):
     def traer_clientes():
         clientes = session.query(Clientes).all()
         return clientes
-
-
-
+    
+    def traer_cliente_id(id):
+        cliente = session.query(Clientes).filter(Clientes.id_cliente == id).first()
+        print(cliente)
+        return cliente.as_dict()
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

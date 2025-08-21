@@ -23,6 +23,6 @@ class Factura(Base):
     def traer_factura():
         factura = session.query(factura).all()
         return factura
-    # Cambio para forzar commit
+    
 
 

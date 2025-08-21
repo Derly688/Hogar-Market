@@ -1,143 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg  navbar-light" style="background-color:#ffc107;">
-    <div class="container-fluid">
-      <a href="index.html">
-        <img src="../static/images/logosinfondo.png" alt="" style="height: 30px;">
-      </a>
-      
-      <a class="navbar-brand" href="index.html">Merka Logic</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav" style="margin-left: auto;"> 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="usuarios.html">Usuarios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="factura.html">Factura</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="clientes.html">Gestión de clientes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="inventarios.html"> Inventarios</a>
-          </li>
-          <li>
-            <div>
-              <a href="inicio-de-sesion.html">
-                <img src="../static/images/icono cerra sesion.png" alt="" style="width: 30px;" > 
-              </a>
-            </div>
-            
-           
-            
-           
-          </li>
-        </ul>
-      </div>
-    </div>
-</nav>
+{% extends "layout.html" %}
 
-  <div class="container mt-5">
-       <form class="d-flex" role="search">
-         <input class="form-control me-2" type="search" placeholder="Buscar cliente por nombre" aria-label="Buscar">
-         <button class="btn btn-outline-success" type="submit">Buscar  </button>
-       </form>
-   </div>
 
-   <div class="container mt-5">
-       <form class="d-flex" role="search">
-       <input class="form-control me-2" type="search" placeholder="Buscar cliente por cedula" aria-label="Buscar">
-       <button class="btn btn-outline-success" type="submit">Buscar </button>
-       </form>
-
-    </div>
-
-   <div class="container mt-5">
-        <form class="d-flex" role="search">
-           <input class="form-control me-2" type="search" placeholder="Buscar cliente por numero de factura" aria-label="Buscar">
-           <button class="btn btn-outline-success" type="submit">Buscar </button>
-        </form>
-    </div> 
-
- <div class="container mt-5">
-     <h2 class="mb-4">Lista de clientes</h2>
-     <table class="table table-striped table-hover">
-         <thead>
-            <tr>
-               <th scope="col">Nombre</th>
-               <th scope="col">Cédula</th>
-               <th scope="col">Fecha de Nacimiento</th>
-               <th scope="col">Sexo</th>
-               <th scope="col">Email</th>
-               <th scope="col">Teléfono</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-             <tr>
-                <td>Juan Pérez</td>
-                <td>123456789</td>
-                <td>1990-05-15</td>
-                <td>Masculino</td>
-                <td>juan.perez@example.com</td>
-                <td>555-1234</td>
-                <td> <select class="" id="pais">
-                    <option selected>facturas</option>
-                    <option value="1">110320251806</option>
-                    <option value="2">100320250730</option>
-                    <option value="3">311220241030</option>
-                  </select>
-               </td>
-                <td><button onclick="editarFila()">Editar</button></td>
-                <td><button onclick="eliminarFila()">Eliminar</button></td>
-             </tr>
-             <tr>
-                <td>María Gómez</td>
-                <td>987654321</td>
-                <td>1985-10-22</td>
-                <td>Femenino</td>
-                <td>maria.gomez@example.com</td>
-                <td>555-5678</td>
-                <td> <select class="" id="pais">
-                    <option selected>facturas</option>
-                    <option value="1">110320251806</option>
-                    <option value="2">100320250730</option>
-                    <option value="3">311220241030</option>
-                  </select>
-               </td>
-                <td><button onclick="editarFila()">Editar</button></td>
-                <td><button onclick="eliminarFila()">Eliminar</button></td>
-             </tr>
-             <tr>
-                <td>Carlos López</td>
-                <td>456789123</td>
-                <td>1995-03-30</td>
-                <td>Masculino</td>
-                <td>carlos.lopez@example.com</td>
-               <td>555-8765</td>
-               <td> <select class="" id="pais">
-                <option selected>facturas</option>
-                <option value="1">110320251806</option>
-                <option value="2">100320250730</option>
-                <option value="3">311220241030</option>
-              </select>
-           </td>
-                <td><button onclick="editarFila()">Editar</button></td>
-                <td><button onclick="eliminarFila()">Eliminar</button></td>
-             </tr>
-         </tbody>
-     </table>
+{% block contenido %}
+  <h1> {{ titulo }}</h1>
+  <div class=" container d-flex justify-content-end">
+      <a href="editarcliente.html" class="btn background-color: btn-primary"></a>
   </div>
+
+    <div class="container mt-5">
+      <h2>Nuevo Cliente</h2>
+      <form action="/editar_clientes" method="post">
+
+        
+        
+         
+        <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input name="nombre" type="text" value="{{cliente.nombre}}" class="form-control" id="nombre" placeholder="">
+
+        </div>
+
+        <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+            <input name="fecha_nacimiento"type="date" value="{{cliente.fecha_nacimiento}}" class="form-control" id="fechaNacimiento" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="cedula " class="form-label">Cedula </label>
+            <input name="cedula" type="text" value="{{cliente.cedula}}" class="form-control" id="Cedula" placeholder="">
+        </div>
+
+        <div class="mb-3">
+            <label for="Telefono" class="form-label">Telefono </label>
+            <input name="telefono" type="text" value="{{cliente.telefono}}" class="form-control" id="Telefono" placeholder="">
+        </div>
+  
+        <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input name="email" type="email" value="{{cliente.email}}" class="form-control" id="email" placeholder="">
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary " >Guardar cambios</button> 
+        </div>
+      </form>
+
+      <br>
+   </div>
+      <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2026 SI Markets. Todos los derechos reservados.</p>
+      </footer>
+          
+{% endblock contenido %}        
+</body>
+</html>

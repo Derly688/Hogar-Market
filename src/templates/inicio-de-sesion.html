@@ -38,27 +38,44 @@
                         <img src="D:\Users\Usuario\Desktop\MerkaLogic\app\static\images\logosinfondo.png" alt="" style=" width: 50px;" class="">
                     </div>
                     <h3 class="card-title text-center">Inicio de Sesión</h3>
-                    <form method="post" >
-                        <div class="mb-3">
-                            <label for="cedula" class="form-label">Cédula</label>
-                            <input type="text" class="form-control" id="cedula" placeholder="Ingrese su cedula sin puntos ni comas" required>
-                            
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" required>
-                        </div>
-                        <main class="container my-5">
-                            <section id="crearnuevousuario" class="mb-5 d-flex justify-content-center align-items-center">
-                                
-                                <a href="index.html" class="btn " style="background-color: #20c997;">Iniciar Sesión</a>
-                            </section>
-                    </form>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="cedula" class="form-label">Cédula</label>
+                    <input type="text" class="form-control" id="cedula" placeholder="Ingrese su cedula sin puntos ni comas" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" required>
+                </div>
+                <main class="container my-5">
+                   <section id="crearnuevousuario" class="mb-5 d-flex justify-content-center align-items-center">
+                   <button type="submit" class="btn" style="background-color: #20c997;">Iniciar Sesión</button>
+              </section>
+           </form>
+
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+               event.preventDefault(); // Evita el envío automático
+
+            let cedula = document.getElementById("cedula").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            if (cedula === "" || password === "") {
+            alert("Por favor ingrese su cédula y contraseña.");
+            return;
+            }
+
+            // Si todo está bien, redirigir a index.html
+            window.location.href = "index.html";
+         });
+       </script>
+
+                      
                 </div>
             </div>
         </div>
     </div>
-
- </div>
+</div>
    
 </body>
+</html>
