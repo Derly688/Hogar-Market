@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+
+{% block contenido %} 
+<h1>{{ titulo }}</h1>  
+  <form action="/formulario_producto.html" method="post">    
+    <div class="form-row">
+      
+      <div class="form-group col-md-6">
+        <label for="codigo">Código</label>
+        <input type="text" class="form-control" id="codigo" name="codigo" placeholder="AAA00000" onblur="validarCodigo()" required>
+        <span class="alert alert-danger" role="alert" id="errorCodigo" style="display: none;">Error el campo debe tener 3 letras mayúsculas y luego números</span>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="descripcion">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Describa el producto (dato único)" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="cantidad_inventario">Cantidad Inventario</label>
+        <input type="number" class="form-control" id="cantidad_inventario" name="cantidad_inventario" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="unidad_medida">Unidad de Medida</label>
+        <select id="unidad_medida" class="form-control" name="unidad_medida">
+          <option selected>Por favor seleccione...</option>
+          <option value="GRS">GRS</option>
+          <option value="UND">UND</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="categoria">Categoria</label>
+        <select id="categoria" name="categoria" class="form-control">
+          <option selected>Por favor seleccione...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="valor_unitario">Valor Unitario</label>
+        <input type="number" class="form-control" id="valor_unitario" name="valor_unitario">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form> 
+  <script type="text/javascript">
+    function validarCodigo() {
+      console.log("entro a la funcion");
+      let campoCodigo = document.getElementById("codigo");
+      let valorCodigo = campoCodigo.value;
+      let errorCodigo = document.getElementById("errorCodigo");
+      console.log("El valor del código escrito es: " + valorCodigo);
+      var expresionRegular = new RegExp("[A-Z]{3}[0-9]{1,}")
+      if(expresionRegular.test(valorCodigo)) {
+        console.log("El campo cumple la validacion");
+        errorCodigo.style.display = 'none';
+
+      } else {
+        console.log("El campo NO cumple la validacion debe tener el formato AAA0000");
+        errorCodigo.style.display = 'block';
+      }
+    }
+  
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  {% endblock contenido %}
+</body>
+</html>

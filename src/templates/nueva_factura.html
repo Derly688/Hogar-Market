@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block contenido %}
+<div class="container">
+    <h2>Nueva Factura</h2>
+    
+    <form method="POST" action="{{ url_for('facturas.nueva_factura') }}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Información de la Factura</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="numero_factura" class="form-label">Número de Factura *</label>
+                            <input type="text" class="form-control" id="numero_factura" name="numero_factura" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="cliente_id" class="form-label">Cliente *</label>
+                            <select class="form-select" id="cliente_id" name="cliente_id" required>
+                                <option value="">Seleccionar cliente...</option>
+                                {% for cliente in clientes %}
+                                <option value="{{ cliente.id }}">{{ cliente.nombre }} - {{ cliente.cedula }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Productos</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for producto in productos %}
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" 
+                                               name="producto_id" value="{{ producto.id }}"
+                                               id="producto_{{ producto.id }}">
+                                        <label class="form-check-label" for="producto_{{ producto.id }}">
+                                            {{ producto.codigo }} - {{ producto.descripcion }}
+                                        </label>
+                                    </div>
+                                    <small class="text-muted">
+                                        Stock: {{ producto.cantidad_stock }} | 
+                                        Precio: ${{ producto.valor_unitario }}
+                                    </small>
+                                </td>
+                                <td>
+                                    <input type="number" name="cantidad_{{ producto.id }}" 
+                                           class="form-control form-control-sm" 
+                                           min="1" max="{{ producto.cantidad_stock }}" 
+                                           value="1" disabled>
+                                </td>
+                                <td>${{ producto.valor_unitario }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Crear Factura</button>
+            <a href="{{ url_for('facturas.lista_facturas') }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Script simple para habilitar/deshabilitar la cantidad cuando se selecciona un producto
+    document.querySelectorAll('input[type="checkbox"][name="producto_id"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const productId = this.value;
+            const quantityInput = document.querySelector(`input[name="cantidad_${productId}"]`);
+            quantityInput.disabled = !this.checked;
+        });
+    });
+</script>
+{% endblock %}

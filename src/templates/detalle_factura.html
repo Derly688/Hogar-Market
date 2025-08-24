@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block contenido %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Detalle de Factura #{{ factura.numero_factura }}</h2>
+        <div>
+            <a href="{{ url_for('facturas.lista_facturas') }}" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Información de la Factura</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>Número:</strong></div>
+                        <div class="col-8">{{ factura.numero_factura }}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>Fecha:</strong></div>
+                        <div class="col-8">{{ factura.fecha_emision.strftime('%d/%m/%Y %H:%M') }}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>Estado:</strong></div>
+                        <div class="col-8">
+                            <span class="badge 
+                                {% if factura.estado == 'Pagada' %}bg-success
+                                {% elif factura.estado == 'Anulada' %}bg-danger
+                                {% else %}bg-warning{% endif %}">
+                                {{ factura.estado }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Información del Cliente</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>Nombre:</strong></div>
+                        <div class="col-8">{{ factura.cliente.nombre }}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>Cédula:</strong></div>
+                        <div class="col-8">{{ factura.cliente.cedula }}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>Teléfono:</strong></div>
+                        <div class="col-8">{{ factura.cliente.telefono or 'N/A' }}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>Email:</strong></div>
+                        <div class="col-8">{{ factura.cliente.email or 'N/A' }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Productos</h5>
+        </div>
+        <div class="card-body">
+            <!-- Agregar debug para ver qué datos tienes -->
+            {% if factura.obtener_items_detalle() %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in factura.obtener_items_detalle() %}
+                            <tr>
+                                <td>{{ item['codigo'] }}</td>
+                                <td>{{ item['descripcion'] }}</td>
+                                <td>{{ item['cantidad'] }}</td>
+                                <td>${{ "%.2f"|format(item['precio_unitario']) }}</td>
+                                <td>${{ "%.2f"|format(item['subtotal']) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-end"><strong>Subtotal:</strong></td>
+                                <td><strong>${{ "%.2f"|format(factura.subtotal) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-end"><strong>IVA (19%):</strong></td>
+                                <td><strong>${{ "%.2f"|format(factura.iva) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                                <td><strong>${{ "%.2f"|format(factura.total) }}</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    No hay productos asociados a esta factura.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mt-4">
+        {% if factura.estado == 'Pendiente' %}
+        <form action="{{ url_for('facturas.pagar_factura', id=factura.id) }}" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-success me-2">Marcar como Pagada</button>
+        </form>
+        {% endif %}
+        
+        {% if factura.estado != 'Anulada' %}
+        <form action="{{ url_for('facturas.anular_factura', id=factura.id) }}" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-warning me-2">Anular Factura</button>
+        </form>
+        {% endif %}
+        
+        <form action="{{ url_for('facturas.eliminar_factura', id=factura.id) }}" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar esta factura?')">
+                Eliminar
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .badge {
+        font-size: 0.9em;
+        padding: 0.5em 0.8em;
+    }
+</style>
+
+{% endblock contenido %}

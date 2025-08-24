@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+
+{% block contenido %}
+  <h1> {{ titulo }}</h1>
+  <div class="row">
+    <div class=" col d-flex text-center">
+      <a href="/formulario_producto.html" class="btn background-color: btn-primary"> Agregar producto al inventario</a>
+    </div>
+  </div>
+  <br>
+
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Cantidad Inventario</th>
+        <th scope="col">Unidad de Medida</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Valor Unitario</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for producto in productos %}
+      <tr>
+        <td>{{producto.codigo}}</td>
+        <td>{{producto.descripcion}}</td>
+        <td>{{producto.cantidad_stock}}</td>
+        <td>{{producto.unidad_medida}}</td>
+        <td>{{producto.categoria}}</td>
+        <td>{{producto.valor_unitario}}</td>
+        <td>
+          <a href="{{ url_for('editar_producto', id=producto.id) }}" class="btn btn-sm btn-warning">Editar</a>
+          <form action="{{ url_for('eliminar_producto', id=producto.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+   
+  
+ 
+
+
+
+ {% endblock contenido %} 
+   
+</body>
+</html>

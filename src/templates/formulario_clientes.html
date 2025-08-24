@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+
+{% block contenido %}
+  <h1> {{ titulo }}</h1>
+  <div class=" container d-flex justify-content-end">
+      <a href="editarcliente.html" class="btn btn-sm btn-warning">Editar</a>
+  </div>
+
+    <div class="container mt-5">
+      <h2>Nuevo cliente</h2>
+      <form action="/formulario_clientes.html" method="post">
+
+        
+        
+         
+        <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input name="nombre" type="text" class="form-control" id="nombre" placeholder="">
+
+        </div>
+
+        <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+            <input name="fecha_nacimiento"type="date" class="form-control" id="fechaNacimiento" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="cedula " class="form-label">Cedula </label>
+            <input name="cedula" type="text" class="form-control" id="Cedula" placeholder="">
+        </div>
+
+        <div class="mb-3">
+            <label for="Telefono" class="form-label">Telefono </label>
+            <input name="telefono" type="text" class="form-control" id="Telefono" placeholder="">
+        </div>
+  
+        <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input name="email" type="email" class="form-control" id="email" placeholder="">
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary " >Guardar cambios</button> 
+        </div>
+      </form>
+
+      <br>
+   </div>
+      <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2026 SI Markets. Todos los derechos reservados.</p>
+      </footer>
+          
+{% endblock contenido %}        
+</body>
+</html>

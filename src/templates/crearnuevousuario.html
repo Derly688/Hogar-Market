@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+
+{% block contenido %}
+        <h2> Usuarios </h2>
+        <form id="formUsuario" action="crearnuevousuario.html" method="post" onsubmit="return validarFormulario()">
+          
+      
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" onblur="validarNombre()">
+            <div class="invalid-feedback" id="errorNombre">El nombre es requerido (mínimo 3 caracteres)</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="fechaNacimiento" name="fecha_nacimiento" onblur="validarFechaNacimiento()">
+            <div class="invalid-feedback" id="errorFecha">Debes ser mayor de 18 años</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="cedula" class="form-label">Cédula</label>
+            <input type="text" class="form-control" id="cedula" name="cedula" placeholder="1234567890" onblur="validarCedula()">
+            <div class="invalid-feedback" id="errorCedula">La cédula debe tener entre 8 y 12 dígitos</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="3001234567" onblur="validarTelefono()">
+            <div class="invalid-feedback" id="errorTelefono">El teléfono debe tener 10 dígitos</div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Ej:carmentc07@gmail.com" onblur="validarEmail()">
+            <div class="invalid-feedback" id="errorEmail">Ingresa un email válido</div>
+          </div>
+
+          
+      
+          <div class="mb-4">
+            <label for="area" class="form-label">Área</label>
+            <select class="form-select" name="area" id="area" onblur="validarArea()">
+              <option value="">Seleccione área</option>
+              <option value="1">Jefe de inventarios</option>
+              <option value="2">Cajero</option>
+              <option value="3">Admin</option>
+            </select>
+            <div class="invalid-feedback" id="errorArea">Debes seleccionar un área</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Contraseña</label>
+            <input type="text" class="form-control" id="contraseña" name="contraseña" placeholder="Ej:carmensita07" >
+
+          </div>
+          
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button> 
+          </div>
+        </form>
+      </div>
+
+      <script>
+       
+        
+        function mostrarError(elemento, mensajeId, mostrar) {
+          const campo = document.getElementById(elemento);
+          const error = document.getElementById(mensajeId);
+          
+          if (mostrar) {
+            campo.classList.add('is-invalid');
+            error.style.display = 'block';
+          } else {
+            campo.classList.remove('is-invalid');
+            error.style.display = 'none';
+          }
+          
+          return !mostrar; 
+        }
+        
+        
+        function validarCodigo() {
+          const campo = document.getElementById("codigo");
+          const valor = campo.value.trim();
+          const regex = /^[A-Z]{3}[0-9]{1,}$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('codigo', 'errorCodigo', true);
+          }
+          return mostrarError('codigo', 'errorCodigo', false);
+        }
+        
+        
+        function validarNombre() {
+          const valor = document.getElementById("nombre").value.trim();
+          if (valor.length < 3) {
+            return mostrarError('nombre', 'errorNombre', true);
+          }
+          return mostrarError('nombre', 'errorNombre', false);
+        }
+        
+        
+        function validarFechaNacimiento() {
+          const fechaInput = document.getElementById("fechaNacimiento").value;
+          if (!fechaInput) {
+            return mostrarError('fechaNacimiento', 'errorFecha', true);
+          }
+          
+          const fechaNacimiento = new Date(fechaInput);
+          const hoy = new Date();
+          const edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+          const mes = hoy.getMonth() - fechaNacimiento.getMonth();
+          
+          if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+            edad--;
+          }
+          
+          if (edad < 18) {
+            return mostrarError('fechaNacimiento', 'errorFecha', true);
+          }
+          return mostrarError('fechaNacimiento', 'errorFecha', false);
+        }
+        
+        
+        function validarCedula() {
+          const valor = document.getElementById("cedula").value.trim();
+          const regex = /^\d{8,12}$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('cedula', 'errorCedula', true);
+          }
+          return mostrarError('cedula', 'errorCedula', false);
+        }
+        
+        
+        function validarTelefono() {
+          const valor = document.getElementById("telefono").value.trim();
+          const regex = /^\d{10}$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('telefono', 'errorTelefono', true);
+          }
+          return mostrarError('telefono', 'errorTelefono', false);
+        }
+        
+        
+        function validarEmail() {
+          const valor = document.getElementById("email").value.trim();
+          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          
+          if (!regex.test(valor)) {
+            return mostrarError('email', 'errorEmail', true);
+          }
+          return mostrarError('email', 'errorEmail', false);
+        }
+        
+        
+        function validarArea() {
+          const valor = document.getElementById("area").value;
+          if (!valor) {
+            return mostrarError('area', 'errorArea', true);
+          }
+          return mostrarError('area', 'errorArea', false);
+        }
+        </script>
+
+ {% endblock contenido%}
+</body>
+</html>
