@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import render_template, request, redirect, url_for, flash
 from flask_controller import FlaskController
 from src.models.clientes import Clientes
@@ -83,3 +84,15 @@ class ClientesController(FlaskController):
             flash(f'Error al eliminar cliente: {str(e)}', 'error')
 
         return redirect(url_for('clientes'))
+=======
+from flask import render_template, request
+from flask_controller import FlaskController
+from src.models.clientes import Clientes
+from src.app import app
+
+class ClientesController(FlaskController):
+    @app.route('/formulario_clientes.html')
+    def gestion_clientes():
+     return render_template('formulario_clientes.html',titulo='Ver productos')
+    
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1

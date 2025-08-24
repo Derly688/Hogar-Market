@@ -1,23 +1,36 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey,Date,engine
+<<<<<<< HEAD
 from src.models import session, Base, engine
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class Clientes(Base):
     __tablename__ = "clientes"
     id = Column(Integer, primary_key=True)
+=======
+from src.models import session, Base
+
+class Clientes(Base):
+    __tablename__ = "clientes"
+    id_cliente = Column(Integer, primary_key=True)
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1
     nombre = Column(String(100), nullable=False, )
     fecha_nacimiento = Column(Date())
     cedula = Column(String(20), unique=True, nullable=False)
     telefono = Column(String(15))
     email = Column(String(20))
 
+<<<<<<< HEAD
     def __init__(self, nombre,fecha_nacimiento,cedula,telefono,email):
+=======
+    def __init__(self,nombre,fecha_nacimiento,cedula,telefono,email):
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1
         self.nombre = nombre
         self.fecha_nacimiento = fecha_nacimiento
         self.cedula = cedula
         self.telefono = telefono
         self.email = email
         
+<<<<<<< HEAD
     @classmethod
     def crear_cliente(cls, cliente):
         session.add(cliente)
@@ -65,3 +78,16 @@ class Clientes(Base):
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+=======
+    def crear_cliente(cliente):
+        cliente = session.add(cliente)
+        session.commit()
+        return cliente
+    
+    def traer_clientes():
+        clientes = session.query(Clientes).all()
+        return clientes
+
+
+
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1

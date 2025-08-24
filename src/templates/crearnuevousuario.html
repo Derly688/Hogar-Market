@@ -1,8 +1,24 @@
+<<<<<<< HEAD
 {% extends "layout.html" %}
 
 
 {% block contenido %}
         <h2> Usuarios </h2>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="../static/styles/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Nuevo usuario</h2>
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1
         <form id="formUsuario" action="crearnuevousuario.html" method="post" onsubmit="return validarFormulario()">
           
       
@@ -32,6 +48,7 @@
       
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
+<<<<<<< HEAD
             <input type="email" class="form-control" id="email" name="email" placeholder="Ej:carmentc07@gmail.com" onblur="validarEmail()">
             <div class="invalid-feedback" id="errorEmail">Ingresa un email válido</div>
           </div>
@@ -41,6 +58,15 @@
           <div class="mb-4">
             <label for="area" class="form-label">Área</label>
             <select class="form-select" name="area" id="area" onblur="validarArea()">
+=======
+            <input type="email" class="form-control" id="email" name="email" placeholder="ejemplo@dominio.com" onblur="validarEmail()">
+            <div class="invalid-feedback" id="errorEmail">Ingresa un email válido</div>
+          </div>
+      
+          <div class="mb-4">
+            <label for="area" class="form-label">Área</label>
+            <select class="form-select" id="area" onblur="validarArea()">
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1
               <option value="">Seleccione área</option>
               <option value="1">Jefe de inventarios</option>
               <option value="2">Cajero</option>
@@ -48,6 +74,7 @@
             </select>
             <div class="invalid-feedback" id="errorArea">Debes seleccionar un área</div>
           </div>
+<<<<<<< HEAD
 
           <div class="mb-3">
             <label for="email" class="form-label">Contraseña</label>
@@ -57,6 +84,11 @@
           
           <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-primary">Guardar Cambios</button> 
+=======
+          
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Guardar cambios</button> 
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1
           </div>
         </form>
       </div>
@@ -164,7 +196,12 @@
           return mostrarError('area', 'errorArea', false);
         }
         </script>
+<<<<<<< HEAD
 
  {% endblock contenido%}
 </body>
 </html>
+=======
+</body>
+</html>
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1

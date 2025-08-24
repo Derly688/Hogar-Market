@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date
+<<<<<<< HEAD
 from werkzeug.security import generate_password_hash, check_password_hash
 from src.models import session, Base, engine
 
@@ -14,12 +15,30 @@ class Usuarios(Base):
     contraseña = Column(String(255), nullable=False)  
 
     def __init__(self, nombre, fecha_nacimiento, cedula, telefono, email, area, contraseña): 
+=======
+from src.models import session, Base, engine
+
+class Usuarios(Base):
+    __tablename__ = "usuarios"
+    id = Column(Integer, primary_key=True)
+    nombre = Column(String(100) )
+    fecha_nacimiento = Column(Date())
+    cedula = Column(String(20), unique=True, nullable=False)
+    telefono = Column(String(15))
+    email = Column(String(20))
+    area = Column(String(20))
+    contraseña = Column(String(30), nullable=False)
+
+
+    def __init__(self,nombre,fecha_nacimiento,cedula,telefono,email,area,contraseña): 
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1
         self.nombre = nombre
         self.fecha_nacimiento = fecha_nacimiento
         self.cedula = cedula
         self.telefono = telefono
         self.email = email
         self.area = area
+<<<<<<< HEAD
         self.set_password(contraseña)
 
     @classmethod
@@ -69,3 +88,16 @@ class Usuarios(Base):
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+=======
+        self.contraseña = contraseña
+
+    def crear_usuario(usuario):
+        usuario = session.add(usuario)
+        session.commit()
+        return usuario
+
+    def traer_usuarios():
+        usuarios = session.query(Usuarios).all()
+        return usuarios
+    
+>>>>>>> 19a1a418060f82a1bd470b87b9e26a74659bebf1
